@@ -1,0 +1,6 @@
+{
+  "name": "React-html5-video-editor",
+  "tagline": "React html5 video editor",
+  "body": "# react-html5-video-editor\r\n\r\n[Work in progress]\r\npost an issue to request features \r\n<!--![preview](preview.jpg)-->\r\n<!--[demo](https://github.com/)-->\r\n\r\n## Features:\r\n - simple & clean\r\n - enhanced video previews\r\n - video crop\r\n - effect composer\r\n - numerous formats support\r\n - customizable\r\n\r\n## Roadmap\r\n - video crop\r\n - enhanced video previews\r\n - effect composer\r\n - multiple tracks\r\n\r\n## Quickstart\r\n### Install\r\n```\r\nnpm install --save react-html5-video-editor\r\n```\r\n\r\n### Basic usage\r\n```javascript\r\nimport Video from 'react-html5-video-editor';\r\nrender() {\r\n    return (\r\n        <Video controls autoPlay loop muted\r\n            poster=\"http://poster.png\"\r\n            <source src=\"static/example.webm\" type=\"video/webm\" />\r\n        </Video>\r\n    );\r\n}\r\n```\r\n\r\n### Configuration\r\n```javascript\r\nVideo.Props = {\r\n\tautoPlay: false,\r\n\tloop: false,\r\n\tcontrols:\ttrue,\r\n\tvolume:\t1.0,\r\n\tpreload: \"auto\",\r\n\tcropEnabled: true;\r\n}\r\n```\r\n\r\n## License\r\nGNU GPLv3\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
