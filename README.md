@@ -2,7 +2,8 @@
 
 [Work in progress]
 post an issue to request features 
-<!--![preview](preview.jpg)-->
+
+![preview](img/crop-preview.png)
 <!--[demo](https://github.com/)-->
 
 ## Features:
