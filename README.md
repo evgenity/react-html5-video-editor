@@ -1,7 +1,7 @@
 # react-html5-video-editor
 
 [Work in progress]
-
+post an issue to request features 
 <!--![preview](preview.jpg)-->
 <!--[demo](https://github.com/)-->
 
