@@ -1,0 +1,32 @@
+{
+  "name": "react-html5-video-editor",
+  "version": "1.0.0",
+  "description": "React component for simple video effects online",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "crop"
+  ],
+  "author": "evgenity_dev",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-html5video": "^1.2.9"
+  },
+  "devDependencies": {
+    "babel-core": "^6.9.1",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-runtime": "^6.9.2",
+    "react-hot-loader": "^1.3.0",
+    "webpack": "^1.13.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/evgenity/react-html5-video-editor.git"
+  }
+}
