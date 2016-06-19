@@ -1,6 +1,7 @@
-import {default as Video, Controls, Play, Time, Mute, Fullscreen} from 'react-html5video';
+import {default as Video, Play, Time, Mute, Fullscreen} from 'react-html5video';
 var React = require('react');
 var ReactDOM = require('react-dom');
+
 
 var Icon = React.createClass({
 
@@ -53,7 +54,7 @@ var Spinner = React.createClass({
 
 });
 
-var Overlay1 = React.createClass({
+var Overlay = React.createClass({
 
     propTypes: {
         error: React.PropTypes.bool,
@@ -80,10 +81,7 @@ var Overlay1 = React.createClass({
         } else {
             content = (<div className="video-overlay__play" onClick={this.props.togglePlay}>
                 <div>
-                    {this.props.paused ? <Icon name="crop-begin" /> : ''}
-                </div>
-                <div>
-                    {this.props.paused ? <Icon name="crop-end" /> : ''}
+                    {this.props.paused ? <Icon name="play-1" /> : ''}
                 </div></div>
             );
         }
@@ -103,6 +101,8 @@ var Overlay1 = React.createClass({
 var Crop = React.createClass({
 
     propTypes: {
+      isStart: React.PropTypes.bool,
+      onClick: React.PropTypes.func,
     },
 
     /**
@@ -112,17 +112,17 @@ var Crop = React.createClass({
      * @return {boolean}          Whether we re-render or not
      */
     shouldComponentUpdate(nextProps) {
-        return false;
+        return true;
     },
 
     render() {
         return (
-          <div className="video-mute video__control" >
+          <div className="video-crop video__control" >
             <button
-                className="video-mute__inner"
-                onClick=""
+                className="video-crop__inner"
+                onClick={()=>{this.props.onClick(this.props.isStart)}}
                 aria-label="aria-label">
-                <Icon name='crop' />
+                <Icon name={this.props.isStart ? 'crop-begin' : 'crop-end'} />
             </button>
           </div>
         );
@@ -136,7 +136,9 @@ var Seek = React.createClass({
         seek: React.PropTypes.func,
         percentageBuffered: React.PropTypes.number,
         percentagePlayed: React.PropTypes.number,
-        duration: React.PropTypes.number
+        duration: React.PropTypes.number,
+        cropBegin: React.PropTypes.number,
+        cropEnd: React.PropTypes.number,
     },
 
     getInitialState() {
@@ -156,6 +158,7 @@ var Seek = React.createClass({
      * @return {boolean}          Whether we re-render or not
      */
     shouldComponentUpdate(nextProps) {
+      return true;
         return this.props.seek !== nextProps.seek ||
                this.props.percentageBuffered !== nextProps.percentageBuffered ||
                this.props.percentagePlayed !== nextProps.percentagePlayed ||
@@ -198,12 +201,30 @@ var Seek = React.createClass({
                         onBlur={this.onBlur}
                         onFocus={this.onFocus}
                         onChange={this.seek}
-                        progress={this.props.percentagePlayed} />
+                        progress={this.props.percentagePlayed} 
+                        cropStart={this.props.cropBegin}
+                        cropEnd={this.props.cropEnd} />
                 </div>
             </div>
         );
     }
 });
+
+var CropMarker = React.createClass({
+    propTypes: {
+      position: React.PropTypes.number,
+      isStart: React.PropTypes.bool,
+    },
+
+    render() {
+      if (this.props.isStart) {
+        return <div className="start_marker" style={{left: this.props.position + "%"}}/>
+      }
+      else {
+        return <div className="end_marker" style={{left: this.props.position + "%"}}/>
+      }
+    }
+})
 
 var ProgressBar = React.createClass({
 
@@ -213,7 +234,21 @@ var ProgressBar = React.createClass({
         progress: React.PropTypes.number,
         onChange: React.PropTypes.func,
         onFocus: React.PropTypes.func,
-        onBlur: React.PropTypes.func
+        onBlur: React.PropTypes.func,
+        cropStart: React.PropTypes.number,
+        cropEnd: React.PropTypes.number,
+    },
+
+    shouldComponentUpdate(nextProps) {
+      return true;
+        return this.props.progress !== nextProps.progress;
+    },
+
+    getInitialState() {
+      return {
+        cropBegin: 10,
+        cropEnd: 40,
+      };
     },
 
     getDefaultProps() {
@@ -223,7 +258,9 @@ var ProgressBar = React.createClass({
             progress: 0,
             onChange: this.onChange,
             onFocus: this.onFocus,
-            onBlur: this.onBlur
+            onBlur: this.onBlur,
+            cropStart: 10,
+            cropEnd: 20,
         };
     },
 
@@ -234,8 +271,9 @@ var ProgressBar = React.createClass({
         this.refs.input.setAttribute('orient', this.props.orientation);
     },
 
-    onChange() {
-        // Placeholder
+    onChange(e) {
+      console.log(e.target.value)
+        this.props.onChange(e);
     },
 
     onFocus() {
@@ -257,15 +295,87 @@ var ProgressBar = React.createClass({
                     onBlur={this.props.onBlur}
                     onFocus={this.props.onFocus}
                     ref="input"
-                    onChange={this.props.onChange}
+                    onChange={this.onChange}
                     type="range"
                     min="0"
                     max="100"
                     value={this.props.progress}
                     step={this.props.step} />
-                <div className="start_marker" />
-                <div className="end_marker" />
+                <CropMarker isStart={true} position={this.props.cropStart} />
+                <CropMarker isStart={false} position={this.props.cropEnd} />
             </div>
+        );
+    }
+});
+
+var Controls = React.createClass({
+    getInitialState: function() {
+      return {
+        cropBegin: 0,
+        cropEnd: 98
+      };
+    },
+
+    propTypes: {
+        error: React.PropTypes.bool,
+        children: React.PropTypes.oneOfType([
+            React.PropTypes.arrayOf(React.PropTypes.node),
+            React.PropTypes.node
+        ])
+    },
+    onCropClicked: function(isStart) {
+      const played = this.props.percentagePlayed;
+      if (isStart) {
+        this.setState({cropBegin: played > this.state.cropEnd ? this.state.cropEnd : played});
+      }
+      else {
+        this.setState({cropEnd: (played < this.state.cropBegin ? this.state.cropBegin : played) - 2});
+      }
+    },
+    getDefaultProps() {
+        return {
+            children: [
+              <Play />,
+              <Seek />,
+              <Time />,
+              <Mute />,
+            ]
+        };
+    },
+
+    /**
+     * Returns children components with props
+     * from the parent Video component. Needed
+     * for when custom React components are used.
+     * @return {Array.<ReactElement>} An array of components.
+     */
+    renderChildren: function() {
+        return React.Children.map(this.props.children, child => {
+            return React.cloneElement(child, {...this.props});
+        });
+    },
+
+    renderDefaultChildren: function() {
+        var children = [
+              <Play />,
+              <Seek cropBegin={this.state.cropBegin} cropEnd={this.state.cropEnd}/>,
+              <Time />,
+              <Mute />,
+              <Crop isStart={true} onClick={this.onCropClicked} />,
+              <Crop isStart={false} onClick={this.onCropClicked} />
+            ]
+        return React.Children.map(children, child => {
+            return React.cloneElement(child, {...this.props});
+        });
+    },
+
+    render: function() {
+        return (
+            !this.props.error ? (
+                <div className="video-controls video__controls">
+                    {this.renderDefaultChildren()}
+                </div>
+            ) : null
         );
     }
 });
@@ -273,14 +383,8 @@ var ProgressBar = React.createClass({
 ReactDOM.render(
   <Video controls autoPlay loop muted  poster="src/img/poster.png">
     <source src="src/video/small.mp4" type="video/mp4" />
-    <Overlay1 />
-    <Controls>
-      <Play />
-      <Seek />
-      <Time />
-      <Mute />
-      <Crop />
-    </Controls>
+    <Overlay />
+    <Controls />
   </Video>
   ,
   document.getElementById('example')

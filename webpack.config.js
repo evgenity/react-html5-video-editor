@@ -7,7 +7,7 @@ module.exports = {
     module : {
         loaders: [ { 
             test   : /.js$/,
-            loaders : ['react-hot', 'babel-loader?' + JSON.stringify({presets: ["es2015", "react"]})],
+            loaders : ['react-hot', 'babel-loader?' + JSON.stringify({presets: ["es2015", "stage-0", "react"]})],
             exclude: "./node_modules/",
         }],
         resolve: {
