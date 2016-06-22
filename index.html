@@ -4,9 +4,82 @@
     <meta charset="UTF-8" />
     <title>Crop html5 video online</title>
     <link rel="stylesheet" href="src/css/custom.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.2.6/interact.js"></script>
   </head>
   <body>
     <div id="example"></div>
     <script src="build/bundle.dist.js"></script>
+    <script type="text/javascript">
+		document.addEventListener("DOMContentLoaded", function(event) {
+
+		interact('.draggable')
+		.draggable({
+		  inertia: true,
+		  restrict: {
+		    restriction: "parent",
+		    endOnly: false,
+		    elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
+		  },
+		  autoScroll: true,
+		  onmove: dragMoveListener,
+		  onend: function (event) {
+		    var target = event.target;
+		  }
+		})
+		.restrict({
+		    drag: document.getElementById('video-progress-bar'),
+		});
+
+		function dragMoveListener (event) {
+		  var target = event.target;
+		  var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
+		  var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+
+		  target.style.webkitTransform = target.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+
+		  target.setAttribute('data-x', x);
+		  target.setAttribute('data-y', y);
+		}
+
+		window.dragMoveListener = dragMoveListener;
+
+		interact('.dropzone').dropzone({
+		  // only accept elements matching this CSS selector
+		  accept: '#yes-drop',
+		  // Require a 75% element overlap for a drop to be possible
+		  overlap: 0.75,
+
+		  // listen for drop related events:
+
+		  ondropactivate: function (event) {
+		    // add active dropzone feedback
+		    event.target.classList.add('drop-active');
+		  },
+		  ondragenter: function (event) {
+		    var draggableElement = event.relatedTarget,
+		        dropzoneElement = event.target;
+
+		    // feedback the possibility of a drop
+		    dropzoneElement.classList.add('drop-target');
+		    draggableElement.classList.add('can-drop');
+		    draggableElement.textContent = '';
+		  },
+		  ondragleave: function (event) {
+		    // remove the drop feedback style
+		    event.target.classList.remove('drop-target');
+		    event.relatedTarget.classList.remove('can-drop');
+		    event.relatedTarget.textContent = '';
+		  },
+		  ondrop: function (event) {
+		    event.relatedTarget.textContent = '';
+		  },
+		  ondropdeactivate: function (event) {
+		    // remove active dropzone feedback
+		    event.target.classList.remove('drop-active');
+		    event.target.classList.remove('drop-target');
+		  }
+		});
+		})
+    </script>
   </body>
 </html>

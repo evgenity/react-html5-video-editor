@@ -218,10 +218,10 @@ var CropMarker = React.createClass({
 
     render() {
       if (this.props.isStart) {
-        return <div className="start_marker" style={{left: this.props.position + "%"}}/>
+        return <div className="start_marker draggable" style={{left: this.props.position + "%"}}/>
       }
       else {
-        return <div className="end_marker" style={{left: this.props.position + "%"}}/>
+        return <div className="end_marker draggable" style={{left: this.props.position + "%"}}/>
       }
     }
 })
@@ -286,7 +286,7 @@ var ProgressBar = React.createClass({
 
     render() {
         return (
-            <div className={'video-progress-bar ' + (this.props.orientation === 'horizontal'
+            <div id={'video-progress-bar'} className={'video-progress-bar ' + (this.props.orientation === 'horizontal'
                 ? 'video-progress-bar--horizontal' : 'video-progress-bar--vertical')}>
                 <div className="video-progress-bar__fill" style={{
                     [this.props.orientation === 'horizontal' ? 'width' : 'height']: this.props.progress + '%'
