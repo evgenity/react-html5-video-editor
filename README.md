@@ -39,13 +39,7 @@ ReactDOM.render(
   <Video controls autoPlay loop muted  poster="src/img/poster.png">
     <source src="src/video/small.mp4" type="video/mp4" />
     <Overlay />
-    <Controls>
-      <Play />
-      <Seek />
-      <Time />
-      <Mute />
-      <Crop />
-    </Controls>
+    <Controls />
   </Video>
   ,
   document.getElementById('example')
