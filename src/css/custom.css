@@ -16,6 +16,10 @@
     border-left: none;
 }
 
+.start_marker, .end_marker {
+    cursor: move;
+}
+
 .video-icon--crop:before {
     content: '\e80b';
 }
