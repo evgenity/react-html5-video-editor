@@ -1,6 +1,6 @@
 # react-html5-video-editor
 
-React video element with a crop marker. Moving crop markers emits Redux actions.
+React / redux video element with a crop marker. Crop markers emit Redux actions when dragged.
 
 ![preview](img/crop-preview.png)
 <!--[demo](https://github.com/)-->
