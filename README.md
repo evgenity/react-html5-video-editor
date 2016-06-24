@@ -1,7 +1,6 @@
 # react-html5-video-editor
 
-[Work in progress]
-post an issue to request features 
+React video element with a crop marker. Moving crop markers emits Redux actions.
 
 ![preview](img/crop-preview.png)
 <!--[demo](https://github.com/)-->
@@ -13,9 +12,9 @@ post an issue to request features
  - effect composer
  - numerous formats support
  - customizable
+Do not hesitate to post an issue to request features.
 
 ## Roadmap
- - video crop
  - enhanced video previews
  - effect composer
  - multiple tracks
