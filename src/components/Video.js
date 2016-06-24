@@ -13,11 +13,17 @@ var Video = React.createClass({
         children: React.PropTypes.node,
         autoPlay: React.PropTypes.bool,
         muted: React.PropTypes.bool,
-        controls: React.PropTypes.bool
+        controls: React.PropTypes.bool,
+        onTimeUpdate: React.PropTypes.func,
     },
 
     getDefaultProps() {
-        return {};
+        return {
+            onTimeUpdate: (e) => {
+                // console.log(e)
+                // console.log(this.videoEl)
+            }
+        }
     },
 
     getInitialState() {
@@ -27,18 +33,20 @@ var Video = React.createClass({
             muted: !!this.props.muted,
             volume: 1,
             error: false,
-            loading: false
+            loading: false,
         };
     },
 
     componentWillMount() {
-        this._updateStateFromVideo = function () {this.updateStateFromVideo()};
+        this._updateStateFromVideo =  () =>{this.updateStateFromVideo()};
         this.mediaEventProps = VIDEO_EVENTS.reduce((p, c) => {
-            p[c] = () => {
+            p[c] = (e) => {
+                console.log(e.type)
                 if (c in this.props && typeof this.props[c] === 'function') {
-                    this.props[c]();
+                    this.props[c](e);
                 }
                 this._updateStateFromVideo();
+                this.props.dispatch({type: 'VIDEO', e: e.type})
             };
             return p;
         }, {});
@@ -69,6 +77,9 @@ var Video = React.createClass({
     },
 
     updateStateFromVideo() {
+        if (this.videoEl.currentTime > this.props.crops[1]) {
+            this.videoEl.currentTime = this.props.crops[0];
+        }
         this.setState({
             // Standard video properties
             duration: this.videoEl.duration,
@@ -141,7 +152,7 @@ var Video = React.createClass({
     render() {
         return (
             <div className={this.getVideoClassName()} tabIndex="0" onFocus={this.onFocus}>
-                <video className="video__el" {...this.mediaEventProps} {...this.props} ref={(el) => { this.videoEl = el; }}>
+                <video className="video__el" {...this.props} {...this.mediaEventProps} ref={(el) => { this.videoEl = el; }}>
                     {this.renderSources()}
                 </video>
                 {this.renderControls()}

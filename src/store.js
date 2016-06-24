@@ -3,6 +3,8 @@ import { createStore, compose, applyMiddleware} from 'redux';
 import rootReducer from './reducers/index';
 
 const defaultState = {
+	crops: [0, 100],
+    posts: [1, 2],
 };
 
 const middleware = {}
