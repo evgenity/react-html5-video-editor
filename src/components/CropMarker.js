@@ -14,10 +14,10 @@ var CropMarker = React.createClass({
 
     render() {
       if (this.props.isStart) {
-        return <div className="start_marker draggable_start" style={{left: "0%"}} onend={function(e) {console.log(e)} }/>
+        return <div className="start_marker draggable_start" style={{left: "0%"}} onend={function(e) {console.log(e)} }>I</div>
       }
       else {
-        return <div className="end_marker draggable_end" style={{left: "98%"}}/>
+        return <div className="end_marker draggable_end" style={{left: "98%"}}>I</div>
       }
     }
 })

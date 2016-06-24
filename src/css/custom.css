@@ -1,9 +1,9 @@
 .start_marker, .end_marker {
     position: absolute;
     top: 0px;
-    width: 5px;
+/*    width: 5px;
     height: 18px;
-    border: 3px solid red;
+    border: 3px solid red;*/
 }
 
 .start_marker {
@@ -13,16 +13,16 @@
 
 .end_marker {
     left: 290px;
-    border-left: none;
+    /*border-left: none;*/
 }
 
 .start_marker, .end_marker {
     cursor: move;
 }
 
-.video-icon--crop:before {
+/*.video-icon--crop:before {
     content: '\e80b';
-}
+}*/
 
 .video {
     position: relative;
@@ -73,7 +73,7 @@
     margin-left: -40px;
     margin-top: -35px;
     font-size: 30px;
-    border-radius: 10px;
+    border-radius: 0px;
     padding: 20px;
     background-color: rgba(0,0,0,0.7);
     -webkit-box-sizing: border-box;
@@ -193,7 +193,7 @@
     content: '\E80B';
 }
 
-.video-icon--crop:before { 
+/*.video-icon--crop:before { 
     content: '\e806';
 }
 
@@ -204,7 +204,7 @@
 .video-icon--crop-end:before { 
     content: ']';
 }
-
+*/
 
 /* Modified spinner from http://tobiasahlin.com/spinkit/ */
 .video-spinner {
@@ -276,7 +276,7 @@
 }
 
 .video-progress-bar__fill {
-    background-color: #fff;
+    background-color: rgb(165, 165, 165);
     position: absolute;
     bottom: 0;
     left: 0;
@@ -500,3 +500,18 @@
     left: 70%;
 }
 
+.start_marker, .end_marker  {
+        /*font-family: 'arrows';*/
+        font-size: 22px;
+        height: 24px;
+        width: 10px;
+        background-color: yellow;
+        padding: auto;
+        color: black;
+        text-align: center;
+    }
+
+
+.video-play.video__control {
+    padding: 2px 6px 3px;
+}

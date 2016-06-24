@@ -41,7 +41,7 @@ var ProgressBar = React.createClass({
             <div id={'video-progress-bar'} className={'video-progress-bar ' + (this.props.orientation === 'horizontal'
                 ? 'video-progress-bar--horizontal' : 'video-progress-bar--vertical')}>
                 <div className="video-progress-bar__fill" style={{
-                    [this.props.orientation === 'horizontal' ? 'width' : 'height']: this.props.progress + '%'
+                    ['width']: this.props.progress + '%', //transition: width 1s ease-in-out;
                 }} />
                 <input className="video-progress-bar__input"
                     onBlur={this.props.onBlur}
