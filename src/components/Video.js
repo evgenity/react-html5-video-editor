@@ -77,8 +77,8 @@ var Video = React.createClass({
     },
 
     updateStateFromVideo() {
-        if (this.videoEl.currentTime > this.props.crops[1]) {
-            this.videoEl.currentTime = this.props.crops[0];
+        if (this.videoEl.currentTime  / this.videoEl.duration * 100 > this.props.crops[1]) {
+            this.videoEl.currentTime = this.props.crops[0] / 100 * this.videoEl.duration;
         }
         this.setState({
             // Standard video properties
