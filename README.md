@@ -7,12 +7,12 @@ React / redux video element with a crop marker. Crop markers emit Redux actions 
 
 ## Features:
  - simple & clean
- - enhanced video previews
  - video crop
  - effect composer
  - numerous formats support
  - customizable
-Do not hesitate to post an issue to request features.
+ 
+Do not hesitate to post an issue to request a feature.
 
 ## Roadmap
  - enhanced video previews
@@ -28,7 +28,7 @@ npm install --save react-html5-video-editor
 ### Basic usage
 ```html
 <body>
-    <div id="example"></div>
+    <div id="root"></div>
     <script src="build/bundle.dist.js"></script>
  </body>
 ```
@@ -37,11 +37,9 @@ npm install --save react-html5-video-editor
 ReactDOM.render(
   <Video controls autoPlay loop muted  poster="src/img/poster.png">
     <source src="src/video/small.mp4" type="video/mp4" />
-    <Overlay />
-    <Controls />
   </Video>
   ,
-  document.getElementById('example')
+  document.getElementById('root')
 );
 ```
 
@@ -50,7 +48,7 @@ ReactDOM.render(
 Video.Props = {
 	autoPlay: false,
 	loop: false,
-	controls:	true,
+	controls: true,
 	volume:	1.0,
 	preload: "auto",
 	cropEnabled: true;
