@@ -12,7 +12,7 @@ React / redux video element with a crop marker. Crop markers emit Redux actions 
  - numerous formats support
  - customizable
  
-Do not hesitate to post an issue to request a feature.
+Do not hesitate to post an issue to request a feature (seriously).
 
 ## Roadmap
  - enhanced video previews
@@ -56,4 +56,4 @@ Video.Props = {
 ```
 
 ## License
-GNU GPLv3
+Code released under [GNU GPLv3](https://github.com/evgenity/react-html5-video-editor/blob/master/LICENSE.txt)
