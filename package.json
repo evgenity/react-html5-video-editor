@@ -1,7 +1,8 @@
 {
   "name": "react-html5-video-editor",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "React component for simple video effects online",
+  "main": "./dist/bundle.js",
   "scripts": {
     "start": "node server.js",
     "lint": "eslint src"

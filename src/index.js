@@ -1,24 +1,20 @@
 import {default as Video} from './components/Video';
 import {default as Overlay} from './components/Overlay'
 import {default as Controls} from './components/Controls'
-import {default as Icon} from './components/Icon'
-import {default as App, RdxControls} from './App'
+import {default as RdxVideo} from './RdxVideo'
 import interact from 'interact.js'
 
-import { Provider } from 'react-redux';
 import store from './store';
 
 var React = require('react');
 var ReactDOM = require('react-dom');
 
 ReactDOM.render(
-	<Provider store={store}>
-	<App autoPlay loop muted  poster="src/img/poster.png">
-	<Overlay />
-	<Controls />
-	<source src="src/video/small.mp4" type="video/mp4" />
-	</App>
-	</Provider>
+	<RdxVideo autoPlay loop muted  poster="src/img/poster.png" store={store}>
+		<Overlay />
+		<Controls />
+		<source src="src/video/small.mp4" type="video/mp4" />
+	</RdxVideo>
 	,
 	document.getElementById('root')
 	);
@@ -80,4 +76,3 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	window.dragMoveListener = dragMoveListener;
 
 })
-

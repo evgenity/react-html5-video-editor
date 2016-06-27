@@ -41,7 +41,7 @@ var Video = React.createClass({
         this._updateStateFromVideo =  () =>{this.updateStateFromVideo()};
         this.mediaEventProps = VIDEO_EVENTS.reduce((p, c) => {
             p[c] = (e) => {
-                console.log(e.type)
+                // console.log(e.type)
                 if (c in this.props && typeof this.props[c] === 'function') {
                     this.props[c](e);
                 }

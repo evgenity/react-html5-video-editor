@@ -1,8 +1,7 @@
 import { combineReducers } from 'redux';
 
-import posts from './posts';
 import crops from './crops';
 
-const rootReducer = combineReducers({posts, crops});
+const rootReducer = combineReducers({crops,});
 
 export default rootReducer;
