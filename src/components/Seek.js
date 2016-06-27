@@ -46,8 +46,8 @@ var Seek = React.createClass({
                         onFocus={this.onFocus}
                         onChange={this.seek}
                         progress={this.props.percentagePlayed} />
-                    <CropMarker isStart={true} position={this.props.cropStart} />
-                    <CropMarker isStart={false} position={this.props.cropEnd} />
+                    <CropMarker store={this.props.store} isStart={true} position={this.props.cropStart} />
+                    <CropMarker store={this.props.store} isStart={false} position={this.props.cropEnd} />
                 </div>
             </div>
         );

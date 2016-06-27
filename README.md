@@ -38,14 +38,14 @@ npm install --save react-html5-video-editor
 ```javascript
 import {RdxVideo, Overlay, Controls} from 'react-html5-video-editor'
 ReactDOM.render(
-  <RdxVideo autoPlay loop muted  poster="src/img/poster.png" store={store}>
+  <RdxVideo autoPlay loop muted poster="src/img/poster.png" store={store}>
     <Overlay />
     <Controls />
     <source src="src/video/small.mp4" type="video/mp4" />
   </RdxVideo>
   ,
   document.getElementById('root')
-  );
+);
 ```
 
 ### Configuration

@@ -38,10 +38,10 @@ var CropMarker = React.createClass({
         },
         autoScroll: true,
         onmove: dragMoveListener,
-        onend: function (event) {
+        onend: (event) => {
           var target = event.target;
           const start = (event.pageX - 48)/400 * 100;
-          store.dispatch({type: 'CROPS_CHANGED', start: start});
+          this.props.store.dispatch({type: 'CROPS_CHANGED', start: start});
         }
       })
       .restrict({
@@ -59,10 +59,10 @@ var CropMarker = React.createClass({
         },
         autoScroll: true,
         onmove: dragMoveListener,
-        onend: function (event) {
+        onend: (event) => {
           var target = event.target;
           const end = (event.pageX - 48)/400 *100;
-          store.dispatch({type: 'CROPS_CHANGED', end: end});
+          this.props.store.dispatch({type: 'CROPS_CHANGED', end: end});
         }
       })
       .restrict({

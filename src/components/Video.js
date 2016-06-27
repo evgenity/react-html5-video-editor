@@ -108,7 +108,7 @@ var Video = React.createClass({
             seek: this.seek,
             fullscreen: this.fullscreen,
             setVolume: this.setVolume
-        }, this.state);
+        }, this.state, this.props);
 
         var controls = React.Children.map(this.props.children, (child, i) => {
             if (child.type === 'source') { return; }
