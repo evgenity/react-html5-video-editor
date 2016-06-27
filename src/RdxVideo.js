@@ -13,5 +13,6 @@ function mapStateToProps(state) {
 }
 
 const RdxVideo = connect(mapStateToProps)(Video);
+const RdxControls = connect(mapStateToProps)(Controls);
 
-export {RdxVideo as default, Overlay, Video, Controls};
+export {RdxVideo as default, Overlay, Video, RdxControls};
