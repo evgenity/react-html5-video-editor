@@ -9,7 +9,6 @@ var Overlay = React.createClass({
         error: React.PropTypes.bool,
         togglePlay: React.PropTypes.func,
         paused: React.PropTypes.bool,
-        // copyKeys: React.PropTypes.object,
         loading: React.PropTypes.bool
     },
 
@@ -18,7 +17,7 @@ var Overlay = React.createClass({
         if (this.props.error) {
             content = (
                 <div className="video-overlay__error">
-                    <p className="video-overlay__error-text">{this.props.copyKeys.sourceError}</p>
+                    <p className="video-overlay__error-text">{this.props.error}</p>
                 </div>
             );
         } else if (this.props.loading) {

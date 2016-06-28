@@ -40,13 +40,11 @@ var CropMarker = React.createClass({
         onmove: dragMoveListener,
         onend: (event) => {
           var target = event.target;
-          const start = (event.pageX - 48)/400 * 100;
+          const x = parseFloat(target.getAttribute('data-x'))
+          const start = x / 400 * 100;
           this.props.store.dispatch({type: 'CROPS_CHANGED', start: start});
         }
       })
-      .restrict({
-        drag: document.getElementById('video-progress-bar'),
-      });
     }
     else {
       interact('.draggable_end')
@@ -61,14 +59,11 @@ var CropMarker = React.createClass({
         onmove: dragMoveListener,
         onend: (event) => {
           var target = event.target;
-          const end = (event.pageX - 48)/400 *100;
+          const x = parseFloat(target.getAttribute('data-x'))
+          const end = (400 + x) / 400 * 100;
           this.props.store.dispatch({type: 'CROPS_CHANGED', end: end});
         }
       })
-      .restrict({
-        drag: document.getElementById('video-progress-bar'),
-      });
-
     }
   },
 
