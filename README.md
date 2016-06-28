@@ -2,7 +2,9 @@
 
 React / redux video element with a crop marker. Crop markers emit Redux actions when dragged.
 
-[![npm version](https://img.shields.io/npm/v/react-html5-video-editor.svg?style=flat-square)](https://www.npmjs.com/package/react-html5-video-editor) [![Build Status](https://travis-ci.org/evgenity/react-html5-video-editor.svg?branch=master)](https://travis-ci.org/evgenity/react-html5-video-editor)
+[![npm version](https://img.shields.io/npm/v/react-html5-video-editor.svg?style=flat-square)](https://www.npmjs.com/package/react-html5-video-editor)
+[![Build Status](https://travis-ci.org/evgenity/react-html5-video-editor.svg?branch=master)](https://travis-ci.org/evgenity/react-html5-video-editor)
+[![Dependancies](https://david-dm.org/evgenity/react-html5-video-editor.svg)](https://david-dm.org/evgenity/react-html5-video-editor)
 
 ![preview](img/crop-preview.png)
 <!--[demo](https://github.com/)-->
