@@ -47,10 +47,8 @@
   },
   "dependencies": {
     "interact.js": "^1.2.6",
-    "lodash": "^4.13.1",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
-    "react-html5video": "^1.2.9",
     "react-redux": "^4.4.5",
     "redux": "^3.5.2"
   }
