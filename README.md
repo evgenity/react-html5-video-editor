@@ -34,8 +34,10 @@ ls node_modules/react-html5-video-editor/dist/react-html5-video-editor.js # incl
 ### Basic browser usage
 ```html
 <script type="text/javascript" src="js/react-html5-video-editor.js"></script>
+
+<div id="root"></div>
 <script type="text/javascript">
-    ReactHtml5VideoEditor.render_editor("", file_path)
+    ReactHtml5VideoEditor.render_editor('img/poster.png', 'video/small.mp4')
 </script>
 ```
 
