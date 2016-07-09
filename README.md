@@ -35,7 +35,7 @@ ls node_modules/react-html5-video-editor/dist/bundle.js
 ```html
 <body>
     <div id="root"></div>
-    <script src="build/bundle.dist.js"></script>
+    <script type="text/javascript" src="js/bundle.js"></script>
  </body>
 ```
 
@@ -54,7 +54,7 @@ ReactDOM.render(
 
 ### Configuration
 ```javascript
-Video.Props = {
+RdxVideo.Props = {
 	autoPlay: false,
 	loop: false,
 	controls: true,
