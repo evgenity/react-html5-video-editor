@@ -28,17 +28,18 @@ Do not hesitate to post an issue to request a feature (seriously).
 ```
 npm init
 npm install react-html5-video-editor --save
-ls node_modules/react-html5-video-editor/dist/bundle.js
+ls node_modules/react-html5-video-editor/dist/react-html5-video-editor.js # include this in <script>-tag
 ```
 
-### Basic usage
+### Basic browser usage
 ```html
-<body>
-    <div id="root"></div>
-    <script type="text/javascript" src="js/bundle.js"></script>
- </body>
+<script type="text/javascript" src="js/react-html5-video-editor.js"></script>
+<script type="text/javascript">
+    ReactHtml5VideoEditor.render_editor("", file_path)
+</script>
 ```
 
+### React usage
 ```javascript
 import {RdxVideo, Overlay, Controls} from 'react-html5-video-editor'
 ReactDOM.render(
