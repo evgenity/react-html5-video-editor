@@ -26,7 +26,9 @@ Do not hesitate to post an issue to request a feature (seriously).
 ## Quickstart
 ### Install
 ```
-npm install --save react-html5-video-editor
+npm init
+npm install react-html5-video-editor --save
+ls node_modules/react-html5-video-editor/dist/bundle.js
 ```
 
 ### Basic usage
