@@ -1,7 +1,7 @@
 import React from 'react';
 import Icon from './Icon';
 
-var Play = React.createClass({
+var ImageBtn = React.createClass({
 
     propTypes: {
         copyKeys: React.PropTypes.object,
@@ -23,12 +23,11 @@ var Play = React.createClass({
     render() {
         return (
             <button
-                className="video-play video__control"
-                onClick={()=>{this.props.togglePlay()}}>
-                {this.props.paused ? <Icon name="play-1" /> : <Icon name="pause-1" />}
+                className="video-play video__control">
+                <Icon name="pic" />
             </button>
         );
     }
 });
 
-export default Play;
+export default ImageBtn;

@@ -28,8 +28,10 @@ var Overlay = React.createClass({
             );
         } else {
             content = (
-                <div className="video-overlay__play" onClick={this.props.togglePlay}>
-                        {this.props.paused ? <Icon name="play-1" /> : ''}
+                <div>            
+                    <div className="video-overlay__pic" onClick={() => {if (!this.props.paused) {this.props.togglePlay();} else {this.props.store.dispatch({type: 'IMG_INSERT', position: this.props.percentagePlayed})}}}>
+                            {this.props.paused ? <Icon name="pic" onClick={() => {this.props.togglePlay();}} /> : ''}
+                    </div>
                 </div>
             );
         }

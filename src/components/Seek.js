@@ -33,6 +33,7 @@ var Seek = React.createClass({
     },
 
     render() {
+        console.log(this.props.crops)
         return (
             <div
                 className={'video-seek video__control' + (this.state.focused
@@ -46,8 +47,9 @@ var Seek = React.createClass({
                         onFocus={this.onFocus}
                         onChange={this.seek}
                         progress={this.props.percentagePlayed} />
-                    <CropMarker store={this.props.store} isStart={true} position={this.props.cropStart} />
-                    <CropMarker store={this.props.store} isStart={false} position={this.props.cropEnd} />
+                        {this.props.crops.map(function(e) {
+                                                    return <CropMarker position={e} />
+                                                })}
                 </div>
             </div>
         );

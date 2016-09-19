@@ -38,7 +38,7 @@ var Video = React.createClass({
     },
 
     componentWillMount() {
-        this._updateStateFromVideo =  () =>{this.updateStateFromVideo()};
+        this._updateStateFromVideo =  () => {this.updateStateFromVideo()};
         this.mediaEventProps = VIDEO_EVENTS.reduce((p, c) => {
             p[c] = (e) => {
                 // console.log(e.type)
@@ -77,9 +77,9 @@ var Video = React.createClass({
     },
 
     updateStateFromVideo() {
-        if (this.videoEl.currentTime  / this.videoEl.duration * 100 > this.props.crops[1]) {
-            this.videoEl.currentTime = this.props.crops[0] / 100 * this.videoEl.duration;
-        }
+        // if (this.videoEl.currentTime  / this.videoEl.duration * 100 > this.props.crops[1]) {
+        //     this.videoEl.currentTime = this.props.crops[0] / 100 * this.videoEl.duration;
+        // }
         this.setState({
             // Standard video properties
             duration: this.videoEl.duration,
